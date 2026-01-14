@@ -1,0 +1,275 @@
+/* =========================
+   1) Variables & base
+   ========================= */
+:root {
+  --max-width: 1100px;
+  --radius: 14px;
+
+  --bg: #0f1220;
+  --surface: #171a2b;
+  --surface-2: #1d2140;
+
+  --text: #eef0ff;
+  --muted: #b7bbdd;
+
+  --accent: #8b5cf6;
+  --border: rgba(255, 255, 255, 0.10);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: radial-gradient(1200px 500px at 20% 0%, rgba(139, 92, 246, 0.25), transparent),
+              radial-gradient(900px 500px at 90% 10%, rgba(56, 189, 248, 0.18), transparent),
+              var(--bg);
+}
+
+/* Liens */
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* =========================
+   2) Layout global
+   ========================= */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section h2 {
+  margin: 0 0 18px;
+  font-size: 1.6rem;
+}
+
+/* =========================
+   3) Navigation
+   ========================= */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(15, 18, 32, 0.75);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav__brand {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), #38bdf8);
+  font-weight: 700;
+}
+
+.nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.nav__links a {
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+
+.nav__links a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+}
+
+/* =========================
+   4) Composants
+   ========================= */
+.card {
+  background: linear-gradient(180deg, var(--surface), var(--surface-2));
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.card__title { margin: 0 0 10px; }
+
+.card__header{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card__header h3{
+  margin: 0;
+  flex: 1;                /* le titre prend l'espace */
+  min-width: 0;           /* autorise le retour à la ligne */
+}
+
+.badge {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  white-space: nowrap;
+
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.list {
+  margin: 10px 0 0;
+  padding-left: 18px;
+}
+
+.tags {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tags li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.92rem;
+}
+
+.muted { color: var(--muted); }
+.small { font-size: 0.92rem; }
+
+/* Boutons */
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+
+.btn:hover { text-decoration: none; filter: brightness(1.05); }
+
+.btn--ghost {
+  background: transparent;
+}
+
+.edu-icon{
+  width: 100px;
+  height: 60px;
+  object-fit: contain;
+  flex: 0 0 auto;         /* ne rétrécit pas */
+  border-radius: 8px;
+  background: rgba(255,255,255,0.04);
+  padding: 6px;
+}
+
+/* =========================
+   5) Hero
+   ========================= */
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 8px 0 14px;
+  color: var(--muted);
+}
+
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.contact-list .icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+
+
+/* =========================
+   6) Formulaire
+   ========================= */
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+input, textarea {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  background: rgba(0,0,0,0.15);
+  color: var(--text);
+}
+
+/* =========================
+   7) Footer
+   ========================= */
+.footer {
+  padding: 24px 0;
+  text-align: center;
+  border-bottom: none;
+}
+
+/* =========================
+   8) Responsive
+   ========================= */
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; }
+}
