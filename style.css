@@ -402,7 +402,7 @@ a:hover { text-decoration: underline; }
   }
 
   .hero__left {
-    gap: 20px;
+    gap: 32px;
   }
 
   /* Photo centrée sur mobile */
@@ -441,6 +441,12 @@ a:hover { text-decoration: underline; }
    12) Responsive (mobile < 600px)
    ========================= */
 @media (max-width: 600px) {
+  /* Réduire hauteur du header sur mobile */
+  :root {
+    --header-height: 50px;
+    --anchor-offset: 70px;
+  }
+
   /* Container et sections : padding réduit */
   .container {
     padding: 16px;
@@ -482,19 +488,27 @@ a:hover { text-decoration: underline; }
   }
 
   /* Header nav : ultra compact */
+  .site-header {
+    height: 50px;
+  }
+
   .nav {
-    padding: 8px 12px;
-    gap: 8px;
+    padding: 6px 8px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
   }
 
   .nav__links {
-    font-size: 0.75rem;
-    gap: 6px;
+    font-size: 0.65rem;
+    gap: 3px;
   }
 
   .nav__links a {
-    padding: 4px 6px;
-    border-radius: 6px;
+    padding: 3px 4px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   /* Card footer responsive */
@@ -525,6 +539,12 @@ a:hover { text-decoration: underline; }
    13) Ultra-mobile (< 400px)
    ========================= */
 @media (max-width: 400px) {
+  /* Réduire encore plus sur ultra-mobile */
+  :root {
+    --header-height: 45px;
+    --anchor-offset: 60px;
+  }
+
   /* Réduction drastique des fonts */
   .section h2 {
     font-size: 1.1rem;
@@ -545,10 +565,24 @@ a:hover { text-decoration: underline; }
     font-size: 0.75rem;
   }
 
-  /* Navigation : liens plus courts */
+  /* Navigation : très compacte */
+  .site-header {
+    height: 45px;
+  }
+
+  .nav {
+    padding: 4px 6px;
+    gap: 2px;
+  }
+
+  .nav__links {
+    font-size: 0.6rem;
+    gap: 2px;
+  }
+
   .nav__links a {
-    padding: 3px 5px;
-    font-size: 0.7rem;
+    padding: 2px 3px;
+    font-size: 0.6rem;
   }
 
   /* Réduction padding global */
