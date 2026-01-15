@@ -49,8 +49,8 @@ body {
   background-attachment: fixed;
   background-size: cover;
 
-  /* Pas de padding car header est sticky */
-  padding-top: 0;
+  /* Header en fixed → on réserve l'espace en haut */
+  padding-top: var(--header-height);
 }
 
 /* Liens : visibles mais sobres */
@@ -86,7 +86,7 @@ a:hover { text-decoration: underline; }
    4) Header / Navigation
    ========================= */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
