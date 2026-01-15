@@ -180,6 +180,24 @@ a:hover { text-decoration: underline; }
   min-width: 0; /* autorise le retour à la ligne proprement */
 }
 
+.card__footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.proof-link {
+  font-size: 0.85rem;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.proof-link:hover {
+  text-decoration: underline;
+}
+
 /* Badge (année, info courte) */
 .badge {
   padding: 4px 10px;
@@ -191,11 +209,15 @@ a:hover { text-decoration: underline; }
   white-space: nowrap;
 }
 
-/* Grilles (compétences, cartes multiples) */
+/* Grilles (compétences, cartes multiples, formations) */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* Listes */
@@ -253,13 +275,13 @@ a:hover { text-decoration: underline; }
 
 /* =========================
    6) Hero (section profil)
-   - 2 colonnes desktop, 1 colonne mobile
+   - 2 colonnes desktop, 1 colonne mobile, photo
    ========================= */
 .hero {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 16px;
-  align-items: start;
+  gap: 32px;
+  align-items: center;
 }
 
 .hero h1 {
@@ -273,6 +295,37 @@ a:hover { text-decoration: underline; }
   color: var(--muted);
 }
 
+/* =========================
+   Photo (avatar) - Hero
+   ========================= */
+.hero__side {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  object-position: center 60%;
+}
+
+/* léger "glow" au survol */
+.avatar:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s ease;
+}
 
 /* =========================
    7) Icônes / logos
@@ -335,4 +388,22 @@ a:hover { text-decoration: underline; }
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
   .hero { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__side {
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .avatar {
+    width: 130px;
+    height: 130px;
+  }
 }
