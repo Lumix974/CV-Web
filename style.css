@@ -1,10 +1,3 @@
-/* =========================================================
-   CV WEB — CSS
-   Objectif : style lisible, cohérent, responsive (desktop/mobile)
-   Logique : Base → Layout → Header/Nav → Sections → Components → Utilities → Responsive
-   ========================================================= */
-
-
 /* =========================
    1) Variables (Design tokens)
    - Centralise couleurs/tailles pour ajuster le thème facilement
@@ -56,7 +49,7 @@ body {
   background-attachment: fixed;
   background-size: cover;
 
-  /* Header en fixed → on réserve l’espace en haut */
+  /* Header en fixed → on réserve l'espace en haut */
   padding-top: var(--header-height);
 }
 
@@ -125,7 +118,7 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
 }
 
-/* Liens d’ancrage */
+/* Liens d'ancrage */
 .nav__links {
   display: flex;
   flex-wrap: wrap;
@@ -272,16 +265,26 @@ a:hover { text-decoration: underline; }
   background: transparent;
 }
 
-
 /* =========================
    6) Hero (section profil)
-   - 2 colonnes desktop, 1 colonne mobile, photo
+   - 2 colonnes desktop : texte/infos | photo
+   - 1 colonne mobile avec stack vertical
    ========================= */
 .hero {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 32px;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.hero__left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero__text {
+  flex: 1;
 }
 
 .hero h1 {
@@ -318,7 +321,6 @@ a:hover { text-decoration: underline; }
   height: 100%;
   object-fit: cover;
   display: block;
-  object-position: center 60%;
 }
 
 /* léger "glow" au survol */
@@ -341,7 +343,6 @@ a:hover { text-decoration: underline; }
   padding: 6px;
 }
 
-
 /* =========================
    8) Contact (liste avec icônes)
    ========================= */
@@ -362,6 +363,7 @@ a:hover { text-decoration: underline; }
   width: 30px;
   height: 30px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 /* =========================
@@ -371,9 +373,8 @@ a:hover { text-decoration: underline; }
 .muted { color: var(--muted); }
 .small { font-size: 0.92rem; }
 
-
 /* =========================
-   11) Footer
+   10) Footer
    ========================= */
 .footer {
   padding: 24px 0;
@@ -381,29 +382,182 @@ a:hover { text-decoration: underline; }
   border-bottom: none;
 }
 
-
 /* =========================
-   12) Responsive
+   11) Responsive (tablet 600-900px)
    ========================= */
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
-  .hero { grid-template-columns: 1fr; }
-}
+  /* Grilles : 2 colonnes → 1 colonne */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-@media (max-width: 900px) {
   .grid--2 {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 900px) {
+  /* Layout hero : stack vertical */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .hero__left {
+    gap: 20px;
+  }
+
+  /* Photo centrée sur mobile */
   .hero__side {
     justify-content: center;
-    margin-top: 10px;
   }
 
   .avatar {
     width: 130px;
     height: 130px;
+  }
+
+  /* Icônes : réduites sur tablet */
+  .edu-icon {
+    width: 80px;
+    height: 50px;
+  }
+
+  /* Navigation : compact */
+  .nav__links {
+    gap: 8px;
+    font-size: 0.9rem;
+  }
+
+  .nav__links a {
+    padding: 6px 8px;
+  }
+
+  /* Hero card : pleine largeur */
+  .hero__card {
+    width: 100%;
+  }
+}
+
+/* =========================
+   12) Responsive (mobile < 600px)
+   ========================= */
+@media (max-width: 600px) {
+  /* Container et sections : padding réduit */
+  .container {
+    padding: 16px;
+  }
+
+  .section {
+    padding: 40px 0;
+  }
+
+  /* Grilles : 1 seule colonne */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Titres : plus petits */
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Card : moins de padding */
+  .card {
+    padding: 14px;
+  }
+
+  /* Boutons : empilés et full-width */
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+
+  /* Header nav : ultra compact */
+  .nav {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .nav__links {
+    font-size: 0.75rem;
+    gap: 6px;
+  }
+
+  .nav__links a {
+    padding: 4px 6px;
+    border-radius: 6px;
+  }
+
+  /* Card footer responsive */
+  .card__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .proof-link {
+    display: block;
+    width: 100%;
+  }
+
+  /* Icônes contact : un peu plus petites */
+  .contact-list .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 16px 0;
+  }
+}
+
+/* =========================
+   13) Ultra-mobile (< 400px)
+   ========================= */
+@media (max-width: 400px) {
+  /* Réduction drastique des fonts */
+  .section h2 {
+    font-size: 1.1rem;
+    margin: 0 0 12px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  /* Badges plus petits */
+  .badge {
+    padding: 2px 8px;
+    font-size: 0.75rem;
+  }
+
+  /* Navigation : liens plus courts */
+  .nav__links a {
+    padding: 3px 5px;
+    font-size: 0.7rem;
+  }
+
+  /* Réduction padding global */
+  .actions {
+    gap: 6px;
+  }
+
+  .btn {
+    padding: 10px 12px;
+    font-size: 0.9rem;
   }
 }
